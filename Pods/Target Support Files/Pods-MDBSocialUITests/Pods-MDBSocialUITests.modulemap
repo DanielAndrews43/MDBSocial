@@ -1,0 +1,6 @@
+framework module Pods_MDBSocialUITests {
+  umbrella header "Pods-MDBSocialUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
