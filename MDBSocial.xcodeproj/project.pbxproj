@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		161585311E5BE7F7001D527D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 161585301E5BE7F7001D527D /* GoogleService-Info.plist */; };
 		16258CE91E5BD20F001E60E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258CE81E5BD20F001E60E0 /* AppDelegate.swift */; };
-		16258CEB1E5BD20F001E60E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258CEA1E5BD20F001E60E0 /* ViewController.swift */; };
 		16258CEE1E5BD20F001E60E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16258CEC1E5BD20F001E60E0 /* Main.storyboard */; };
 		16258CF01E5BD20F001E60E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16258CEF1E5BD20F001E60E0 /* Assets.xcassets */; };
 		16258CF31E5BD20F001E60E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16258CF11E5BD20F001E60E0 /* LaunchScreen.storyboard */; };
 		16258CFE1E5BD20F001E60E0 /* MDBSocialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258CFD1E5BD20F001E60E0 /* MDBSocialTests.swift */; };
 		16258D091E5BD20F001E60E0 /* MDBSocialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258D081E5BD20F001E60E0 /* MDBSocialUITests.swift */; };
+		168D3AE71E5D6F13000DE39A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D3AE61E5D6F13000DE39A /* SignUpViewController.swift */; };
+		169FDDEC1E5BEDB60026592D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169FDDEB1E5BEDB60026592D /* LoginViewController.swift */; };
 		18E90BF21B5A507E25A8B330 /* Pods_MDBSocialUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABB70B418D3BE3A7DB35018 /* Pods_MDBSocialUITests.framework */; };
 		798199FE7DF15116ABE3C641 /* Pods_MDBSocialTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CD5B18ABC8218708746E82 /* Pods_MDBSocialTests.framework */; };
 		EDF8AB4C3B929352004CC9DA /* Pods_MDBSocial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19658BA71F720C010AD66E98 /* Pods_MDBSocial.framework */; };
@@ -42,7 +43,6 @@
 		161585301E5BE7F7001D527D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		16258CE51E5BD20F001E60E0 /* MDBSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDBSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16258CE81E5BD20F001E60E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		16258CEA1E5BD20F001E60E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		16258CED1E5BD20F001E60E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		16258CEF1E5BD20F001E60E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16258CF21E5BD20F001E60E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +53,8 @@
 		16258D041E5BD20F001E60E0 /* MDBSocialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDBSocialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16258D081E5BD20F001E60E0 /* MDBSocialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDBSocialUITests.swift; sourceTree = "<group>"; };
 		16258D0A1E5BD20F001E60E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		168D3AE61E5D6F13000DE39A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		169FDDEB1E5BEDB60026592D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		19658BA71F720C010AD66E98 /* Pods_MDBSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDBSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D70A9689A352BC0F3D43FD7 /* Pods-MDBSocialTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDBSocialTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MDBSocialTests/Pods-MDBSocialTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7ABB70B418D3BE3A7DB35018 /* Pods_MDBSocialUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDBSocialUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,8 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				161585301E5BE7F7001D527D /* GoogleService-Info.plist */,
+				169FDDEB1E5BEDB60026592D /* LoginViewController.swift */,
+				168D3AE61E5D6F13000DE39A /* SignUpViewController.swift */,
 				16258CE81E5BD20F001E60E0 /* AppDelegate.swift */,
-				16258CEA1E5BD20F001E60E0 /* ViewController.swift */,
 				16258CEC1E5BD20F001E60E0 /* Main.storyboard */,
 				16258CEF1E5BD20F001E60E0 /* Assets.xcassets */,
 				16258CF11E5BD20F001E60E0 /* LaunchScreen.storyboard */,
@@ -453,7 +456,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16258CEB1E5BD20F001E60E0 /* ViewController.swift in Sources */,
+				168D3AE71E5D6F13000DE39A /* SignUpViewController.swift in Sources */,
+				169FDDEC1E5BEDB60026592D /* LoginViewController.swift in Sources */,
 				16258CE91E5BD20F001E60E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
