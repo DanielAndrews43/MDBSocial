@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     let inputHeight: CGFloat = 0.15
     let buttonHeight: CGFloat = 0.1
     
-    var emailField: UIView!
-    var passwordField: UIView!
+    var emailField: InputFieldView!
+    var passwordField: InputFieldView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,39 +35,40 @@ class ViewController: UIViewController {
         view.addSubview(imgView)
         
         //Email
-        let emailView: UIView = InputFieldView(frame: CGRect(x: 0, y: imgView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Email")
+        let emailView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: imgView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Email")
         emailView.backgroundColor = UIColor.yellow
         view.addSubview(emailView)
         self.emailField = emailView
         
         //Password
-        let passwordView: UIView = InputFieldView(frame: CGRect(x: 0, y: emailView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Password")
+        let passwordView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: emailView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Password")
         passwordView.backgroundColor = UIColor.green
         view.addSubview(passwordView)
-        self.passwordField = passwordView
+        self.passwordField = passwordView.textField
         
         //Buttons View
-        let buttonsView: UIView = UIView(frame: CGRect(x: 0, y: passwordView.frame.maxY, width: view.frame.width, height: view.frame.height - passwordView.frame.maxY))
+        let buttonsView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: passwordView.frame.maxY, width: view.frame.width, height: view.frame.height - passwordView.frame.maxY))
         buttonsView.backgroundColor = UIColor.blue
         
-        //login Button
-        let loginView: UIView = UIView(frame: CGRect(x: 0, y: buttonsView.frame.minY, width: buttonsView.frame.width / 2, height: buttonsView.frame.height))
-        loginView.backgroundColor = UIColor.cyan
-        let loginButton: UIButton = UIButton(frame: CGRect(x: loginView.frame.width / 10, y: loginView.frame.height / 3, width: loginView.frame.width * 4 / 5, height: loginView.frame.height / 3))
-        loginButton.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
-        loginButton.backgroundColor = UIColor.lightGray
-        loginView.addSubview(loginButton)
-        view.addSubview(loginView)
-        
-        
         //sign up Button
-        let signUpView: UIView = UIView(frame: CGRect(x: loginView.frame.maxX, y: buttonsView.frame.minY, width: buttonsView.frame.width / 2, height: buttonsView.frame.height))
+        let signUpView: UIView = UIView(frame: CGRect(x: 0, y: buttonsView.frame.minY, width: buttonsView.frame.width / 2, height: buttonsView.frame.height))
         signUpView.backgroundColor = UIColor.brown
         let signUpButton: UIButton = UIButton(frame: CGRect(x: signUpView.frame.width / 10, y: signUpView.frame.height / 3, width: signUpView.frame.width * 4 / 5, height: signUpView.frame.height / 3))
         signUpButton.addTarget(self, action: #selector(signUpPressed), for: .touchUpInside)
         signUpButton.backgroundColor = UIColor.lightGray
+        signUpButton.setTitle("Sign Up", for: .normal)
         signUpView.addSubview(signUpButton)
         view.addSubview(signUpView)
+        
+        //login Button
+        let loginView: UIView = UIView(frame: CGRect(x: signUpView.frame.maxX, y: buttonsView.frame.minY, width: buttonsView.frame.width / 2, height: buttonsView.frame.height))
+        loginView.backgroundColor = UIColor.cyan
+        let loginButton: UIButton = UIButton(frame: CGRect(x: loginView.frame.width / 10, y: loginView.frame.height / 3, width: loginView.frame.width * 4 / 5, height: loginView.frame.height / 3))
+        loginButton.addTarget(self, action: #selector(loginPressed), for: .touchUpInside)
+        loginButton.backgroundColor = UIColor.lightGray
+        loginButton.setTitle("Login", for: .normal)
+        loginView.addSubview(loginButton)
+        view.addSubview(loginView)
     }
     
     func loginPressed() {
@@ -77,8 +78,14 @@ class ViewController: UIViewController {
     }
     
     func signUpPressed() {
-        
         //Segue into sign up view controller
+        performSegue(withIdentifier: "loginToSignUp", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginToSignUp" {
+            NSLog("Segue to Sign Up Page")
+        }
     }
 
 }
