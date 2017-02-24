@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController {
     
@@ -44,10 +45,10 @@ class ViewController: UIViewController {
         let passwordView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: emailView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Password")
         passwordView.backgroundColor = UIColor.green
         view.addSubview(passwordView)
-        self.passwordField = passwordView.textField
+        self.passwordField = passwordView
         
         //Buttons View
-        let buttonsView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: passwordView.frame.maxY, width: view.frame.width, height: view.frame.height - passwordView.frame.maxY))
+        let buttonsView: UIView = UIView(frame: CGRect(x: 0, y: passwordView.frame.maxY, width: view.frame.width, height: view.frame.height - passwordView.frame.maxY))
         buttonsView.backgroundColor = UIColor.blue
         
         //sign up Button
@@ -72,9 +73,24 @@ class ViewController: UIViewController {
     }
     
     func loginPressed() {
+        NSLog("Login pressed")
         
-        
-        //Firebase auth
+        FIRAuth.auth()?.signIn(withEmail: emailField.textField.text!, password: passwordField.textField.text!) { (user, error) in
+            
+            if error == nil {
+                //Sign in succesful
+                self.performSegue(withIdentifier: "loginToFeed", sender: self)
+            } else {
+                //Incorrect login
+                print(error.debugDescription)
+                
+                if self.emailField.textField.text == "" || self.passwordField.textField.text == "" {
+                    self.showBasicAlert(title: "Error", content: "Please enter your email and password")
+                } else {
+                    self.showBasicAlert(title: "Error", content: "Incorrect username or password")
+                }
+            }
+        }
     }
     
     func signUpPressed() {
@@ -86,6 +102,27 @@ class ViewController: UIViewController {
         if segue.identifier == "loginToSignUp" {
             NSLog("Segue to Sign Up Page")
         }
+    }
+    
+    /**
+     Shows a basic alert with an "OK" button to dismiss.
+     
+     - parameters:
+     - title: title to display at the top of the alert
+     - content: message to display in alert
+     - currVC: the ViewController in which this function is being called
+     */
+    func showBasicAlert(title: String, content: String) {
+        let alert = UIAlertController(title: title, message: content, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default) {
+            action in
+            
+            alert.dismiss(animated: true, completion: nil)
+            
+        })
+        
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

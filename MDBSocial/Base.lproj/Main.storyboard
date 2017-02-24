@@ -32,10 +32,10 @@
             </objects>
             <point key="canvasLocation" x="1076" y="137.18140929535232"/>
         </scene>
-        <!--View Controller-->
+        <!--Feed View Controller-->
         <scene sceneID="Olf-Re-l8d">
             <objects>
-                <viewController id="Uui-ce-Psa" sceneMemberID="viewController">
+                <viewController id="Uui-ce-Psa" customClass="FeedViewController" customModule="MDBSocial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="exk-ts-rIv"/>
                         <viewControllerLayoutGuide type="bottom" id="YOe-MB-pIe"/>
@@ -46,10 +46,52 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="IK6-eL-OKS"/>
+                    <connections>
+                        <segue destination="cEQ-Dd-sJu" kind="show" identifier="feedToDetail" id="haE-Xb-jHj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAO-zQ-QeV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3556" y="442.12893553223392"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="umu-Dj-Msy">
+            <objects>
+                <viewController id="cEQ-Dd-sJu" customClass="DetailViewController" customModule="MDBSocial" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BlG-TR-W9M"/>
+                        <viewControllerLayoutGuide type="bottom" id="lWe-Yv-lS8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c04-Fs-feL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="IIi-bM-sTU" kind="show" identifier="detailToNewSocial" id="asF-3i-gg9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GL1-y6-aLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4702" y="442"/>
+        </scene>
+        <!--New Social View Controller-->
+        <scene sceneID="ugb-a9-UHL">
+            <objects>
+                <viewController id="IIi-bM-sTU" customClass="NewSocialViewController" customModule="MDBSocial" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FSN-Wv-G6g"/>
+                        <viewControllerLayoutGuide type="bottom" id="3p1-Cf-Xo0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cvu-46-0PK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSU-Nu-3dS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5884" y="441"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Dtb-ZK-K0J">

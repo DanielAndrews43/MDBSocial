@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController {
     
@@ -89,12 +90,49 @@ class SignUpViewController: UIViewController {
     }
     
     func signUpPressed() {
-        //Firebase auth
+        NSLog("Sign up pressed")
+        FIRAuth.auth()?.createUser(withEmail: emailView.textField.text!, password: passView.textField.text!, completion: { (user: FIRUser?, error) in
+            if error == nil {
+                let ref = FIRDatabase.database().reference().child("Users").child((FIRAuth.auth()?.currentUser?.uid)!)
+                ref.setValue(["name": self.nameView.textField.text, "email": self.emailView.textField.text])
+                self.emailView.textField.text = ""
+                self.passView.textField.text = ""
+                self.nameView.textField.text = ""
+                self.performSegue(withIdentifier: "signUpToFeed", sender: self)
+            } else {
+                print(error.debugDescription)
+                
+                if self.passView.textField.text == "" || self.emailView.textField.text == "" || self.nameView.textField.text == "" {
+                    self.showBasicAlert(title: "Error", content: "Please fill in all three fields")
+                } else if (self.passView.textField.text?.characters.count)! < 6 {
+                    self.showBasicAlert(title: "Error", content: "Password needs to be at least 6 characters")
+                }
+            }
+        })
+    }
+    
+    /**
+     Shows a basic alert with an "OK" button to dismiss.
+     
+     - parameters:
+     - title: title to display at the top of the alert
+     - content: message to display in alert
+     - currVC: the ViewController in which this function is being called
+     */
+    func showBasicAlert(title: String, content: String) {
+        let alert = UIAlertController(title: title, message: content, preferredStyle: UIAlertControllerStyle.alert)
         
-        //segueToFeedViewController
-        performSegue(withIdentifier: "signUpToFeed", sender: self)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) {
+            action in
+            
+            alert.dismiss(animated: true, completion: nil)
+            
+        })
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
+
 
 class InputField: UIView {
     var title: String!
