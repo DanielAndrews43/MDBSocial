@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		160AC9F01E5FBBA10026EDA2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160AC9EF1E5FBBA10026EDA2 /* Post.swift */; };
 		161585311E5BE7F7001D527D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 161585301E5BE7F7001D527D /* GoogleService-Info.plist */; };
 		16258CE91E5BD20F001E60E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258CE81E5BD20F001E60E0 /* AppDelegate.swift */; };
 		16258CEE1E5BD20F001E60E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16258CEC1E5BD20F001E60E0 /* Main.storyboard */; };
@@ -15,9 +14,14 @@
 		16258CF31E5BD20F001E60E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16258CF11E5BD20F001E60E0 /* LaunchScreen.storyboard */; };
 		16258CFE1E5BD20F001E60E0 /* MDBSocialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258CFD1E5BD20F001E60E0 /* MDBSocialTests.swift */; };
 		16258D091E5BD20F001E60E0 /* MDBSocialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258D081E5BD20F001E60E0 /* MDBSocialUITests.swift */; };
-		1650ED841E5F74C400A5CE3F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1650ED831E5F74C400A5CE3F /* FeedViewController.swift */; };
-		1650ED861E5F752C00A5CE3F /* NewSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1650ED851E5F752C00A5CE3F /* NewSocialViewController.swift */; };
-		1650ED881E5F753500A5CE3F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1650ED871E5F753500A5CE3F /* DetailViewController.swift */; };
+		168A75791E62281B0047D6D1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A75781E62281B0047D6D1 /* Constants.swift */; };
+		168A75801E62288F0047D6D1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757A1E62288E0047D6D1 /* DetailViewController.swift */; };
+		168A75811E62288F0047D6D1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757B1E62288E0047D6D1 /* FeedViewController.swift */; };
+		168A75821E62288F0047D6D1 /* NewSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757C1E62288E0047D6D1 /* NewSocialViewController.swift */; };
+		168A75831E62288F0047D6D1 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757D1E62288E0047D6D1 /* Date.swift */; };
+		168A75841E62288F0047D6D1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757E1E62288F0047D6D1 /* Post.swift */; };
+		168A75851E62288F0047D6D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757F1E62288F0047D6D1 /* User.swift */; };
+		168A758B1E622E130047D6D1 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A758A1E622E130047D6D1 /* PostCollectionViewCell.swift */; };
 		168D3AE71E5D6F13000DE39A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168D3AE61E5D6F13000DE39A /* SignUpViewController.swift */; };
 		169FDDEC1E5BEDB60026592D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169FDDEB1E5BEDB60026592D /* LoginViewController.swift */; };
 		18E90BF21B5A507E25A8B330 /* Pods_MDBSocialUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABB70B418D3BE3A7DB35018 /* Pods_MDBSocialUITests.framework */; };
@@ -44,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		098E363165BFAC9A5DEBA5A6 /* Pods-MDBSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDBSocial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MDBSocial/Pods-MDBSocial.debug.xcconfig"; sourceTree = "<group>"; };
-		160AC9EF1E5FBBA10026EDA2 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		161585301E5BE7F7001D527D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		16258CE51E5BD20F001E60E0 /* MDBSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDBSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16258CE81E5BD20F001E60E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,9 +61,14 @@
 		16258D041E5BD20F001E60E0 /* MDBSocialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDBSocialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16258D081E5BD20F001E60E0 /* MDBSocialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDBSocialUITests.swift; sourceTree = "<group>"; };
 		16258D0A1E5BD20F001E60E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1650ED831E5F74C400A5CE3F /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		1650ED851E5F752C00A5CE3F /* NewSocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSocialViewController.swift; sourceTree = "<group>"; };
-		1650ED871E5F753500A5CE3F /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		168A75781E62281B0047D6D1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		168A757A1E62288E0047D6D1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Controller/DetailViewController.swift; sourceTree = "<group>"; };
+		168A757B1E62288E0047D6D1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = Controller/FeedViewController.swift; sourceTree = "<group>"; };
+		168A757C1E62288E0047D6D1 /* NewSocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSocialViewController.swift; path = Controller/NewSocialViewController.swift; sourceTree = "<group>"; };
+		168A757D1E62288E0047D6D1 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Model/Date.swift; sourceTree = "<group>"; };
+		168A757E1E62288F0047D6D1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Post.swift; sourceTree = "<group>"; };
+		168A757F1E62288F0047D6D1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		168A758A1E622E130047D6D1 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		168D3AE61E5D6F13000DE39A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		169FDDEB1E5BEDB60026592D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		19658BA71F720C010AD66E98 /* Pods_MDBSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDBSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,13 +139,11 @@
 				16258CF41E5BD20F001E60E0 /* Info.plist */,
 				16258CEC1E5BD20F001E60E0 /* Main.storyboard */,
 				16258CF11E5BD20F001E60E0 /* LaunchScreen.storyboard */,
-				169FDDEB1E5BEDB60026592D /* LoginViewController.swift */,
-				168D3AE61E5D6F13000DE39A /* SignUpViewController.swift */,
 				16258CEF1E5BD20F001E60E0 /* Assets.xcassets */,
-				1650ED831E5F74C400A5CE3F /* FeedViewController.swift */,
-				1650ED851E5F752C00A5CE3F /* NewSocialViewController.swift */,
-				1650ED871E5F753500A5CE3F /* DetailViewController.swift */,
-				160AC9EF1E5FBBA10026EDA2 /* Post.swift */,
+				168A75781E62281B0047D6D1 /* Constants.swift */,
+				168A758C1E623BEA0047D6D1 /* View */,
+				168A75871E6228B90047D6D1 /* Controller */,
+				168A75891E6228D90047D6D1 /* Model */,
 			);
 			path = MDBSocial;
 			sourceTree = "<group>";
@@ -158,6 +164,36 @@
 				16258D0A1E5BD20F001E60E0 /* Info.plist */,
 			);
 			path = MDBSocialUITests;
+			sourceTree = "<group>";
+		};
+		168A75871E6228B90047D6D1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				169FDDEB1E5BEDB60026592D /* LoginViewController.swift */,
+				168D3AE61E5D6F13000DE39A /* SignUpViewController.swift */,
+				168A757A1E62288E0047D6D1 /* DetailViewController.swift */,
+				168A757B1E62288E0047D6D1 /* FeedViewController.swift */,
+				168A757C1E62288E0047D6D1 /* NewSocialViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		168A75891E6228D90047D6D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				168A757D1E62288E0047D6D1 /* Date.swift */,
+				168A757E1E62288F0047D6D1 /* Post.swift */,
+				168A757F1E62288F0047D6D1 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		168A758C1E623BEA0047D6D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				168A758A1E622E130047D6D1 /* PostCollectionViewCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		87505F63C2B49B64BBC0A650 /* Frameworks */ = {
@@ -468,12 +504,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				168A75801E62288F0047D6D1 /* DetailViewController.swift in Sources */,
 				168D3AE71E5D6F13000DE39A /* SignUpViewController.swift in Sources */,
-				1650ED861E5F752C00A5CE3F /* NewSocialViewController.swift in Sources */,
 				169FDDEC1E5BEDB60026592D /* LoginViewController.swift in Sources */,
-				1650ED881E5F753500A5CE3F /* DetailViewController.swift in Sources */,
-				1650ED841E5F74C400A5CE3F /* FeedViewController.swift in Sources */,
-				160AC9F01E5FBBA10026EDA2 /* Post.swift in Sources */,
+				168A75851E62288F0047D6D1 /* User.swift in Sources */,
+				168A75821E62288F0047D6D1 /* NewSocialViewController.swift in Sources */,
+				168A75791E62281B0047D6D1 /* Constants.swift in Sources */,
+				168A75841E62288F0047D6D1 /* Post.swift in Sources */,
+				168A75831E62288F0047D6D1 /* Date.swift in Sources */,
+				168A758B1E622E130047D6D1 /* PostCollectionViewCell.swift in Sources */,
+				168A75811E62288F0047D6D1 /* FeedViewController.swift in Sources */,
 				16258CE91E5BD20F001E60E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

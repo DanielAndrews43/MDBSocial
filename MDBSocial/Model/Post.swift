@@ -22,26 +22,27 @@ class Post: NSObject {
             if let text = postDict!["text"] as? String {
                 self.text = text
             }
-            if let imageUrl = postDict!["imageUrl"] as? String {
+            if let imageUrl = postDict!["imageURL"] as? String {
                 self.imageUrl = imageUrl
             }
-            if let likes = postDict!["numLikes"] as? Int {
+            if let likes = postDict!["likes"] as? Int {
                 self.likes = likes
             }
             if let poster = postDict!["poster"] as? String {
                 self.poster = poster
             }
-            if let name = postDict!["imageUrl"] as? String {
+            if let name = postDict!["name"] as? String {
                 self.name = name
             }
         }
     }
     
     override init() {
-        self.text = "This is a god dream"
-        self.imageUrl = "https://cmgajcmusic.files.wordpress.com/2016/06/kanye-west2.jpg"
+        self.text = "Come and joing the kitten kuddle puddle on lower sproul!"
+        self.imageUrl = "https://newsroom.uber.com/wp-content/uploads/2015/10/HQ_uberkittens_blog_960x540_r1v1.jpg"
         self.id = "1"
+        self.name = "Kitten Kuddling"
         self.likes = 0
-        self.poster = "Kanye West"
+        self.poster = "Bob Marley"
     }
 }

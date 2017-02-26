@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+        self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
         let passwordView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: emailView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Password")
         passwordView.backgroundColor = UIColor.green
         view.addSubview(passwordView)
+        passwordView.textField.isSecureTextEntry = true
         self.passwordField = passwordView
         
         //Buttons View

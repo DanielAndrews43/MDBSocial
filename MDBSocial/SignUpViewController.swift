@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboardWhenTappedAround()
         setLayout()
     }
 
@@ -49,6 +49,7 @@ class SignUpViewController: UIViewController {
         //password
         let passView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: emailView.frame.maxY, width: view.frame.width, height: view.frame.height * fieldHeight), title: "Password")
         passView.backgroundColor = UIColor.yellow
+        passView.textField.isSecureTextEntry = true
         view.addSubview(passView)
         self.passView = passView
         
