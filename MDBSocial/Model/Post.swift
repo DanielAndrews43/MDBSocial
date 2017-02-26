@@ -15,6 +15,9 @@ class Post: NSObject {
     var poster: String?
     var name: String?
     var id: String?
+    var time: String?
+    var posterID: String?
+    var location: String?
     
     init(id: String, postDict: [String:Any]?) {
         self.id = id
@@ -34,6 +37,15 @@ class Post: NSObject {
             if let name = postDict!["name"] as? String {
                 self.name = name
             }
+            if let time = postDict!["time"] as? String {
+                self.time = time
+            }
+            if let posterID = postDict!["posterID"] as? String {
+                self.posterID = posterID
+            }
+            if let location = postDict!["location"] as? String {
+                self.location = location
+            }
         }
     }
     
@@ -44,5 +56,8 @@ class Post: NSObject {
         self.name = "Kitten Kuddling"
         self.likes = 0
         self.poster = "Bob Marley"
+        self.time = "Whenever"
+        self.posterID = "12345"
+        self.location = "Disneyland"
     }
 }

@@ -68,8 +68,8 @@ class NewSocialViewController: UIViewController {
         imageLabel.textAlignment = .right
         imageHolder.addSubview(imageLabel)
         
-        imageUpload = UIImageView(frame: CGRect(x: imageHolder.frame.maxX + imageHolder.frame.width * 0.1, y: 0, width: imageHolder.frame.width * 2 / 3 - imageHolder.frame.width * 0.2, height: imageHolder.frame.height / 2))
-        selectFromLibraryButton = UIButton(frame: CGRect(x: imageHolder.frame.maxX + imageHolder.frame.width * 0.1, y: imageHolder.frame.height / 4, width: imageHolder.frame.width * 2 / 3 - imageHolder.frame.width * 0.2, height: imageHolder.frame.height / 2))
+        imageUpload = UIImageView(frame: CGRect(x: imageLabel.frame.maxX + imageHolder.frame.width * 0.1, y: imageHolder.frame.height / 4, width: imageHolder.frame.width * 2 / 3 - imageHolder.frame.width * 0.2, height: imageHolder.frame.height / 2))
+        selectFromLibraryButton = UIButton(frame: imageUpload.frame)
         selectFromLibraryButton.setTitle("Pick", for: .normal)
         selectFromLibraryButton.setTitleColor(UIColor.blue, for: .normal)
         selectFromLibraryButton.addTarget(self, action: #selector(pickImage), for: .touchUpInside)
@@ -78,22 +78,18 @@ class NewSocialViewController: UIViewController {
         imageHolder.addSubview(selectFromLibraryButton)
         
         view.addSubview(imageHolder)
-        imageHolder.bringSubview(toFront: selectFromLibraryButton)
-        
-        view.addSubview(imageUpload)
-        view.addSubview(selectFromLibraryButton)
-        view.bringSubview(toFront: selectFromLibraryButton)
-        
         
         //Post button / back button
         let postButton: UIButton = UIButton(frame: CGRect(x: 0, y: imageHolder.frame.maxY, width: view.frame.width, height: view.frame.height - imageHolder.frame.maxY))
         postButton.setTitle("Post!", for: .normal)
         postButton.setTitleColor(UIColor.blue, for: .normal)
         postButton.addTarget(self, action: #selector(post), for: .touchUpInside)
+        postButton.backgroundColor = UIColor.lightGray
         view.addSubview(postButton)
     }
     
     func pickImage(sender: UIButton!) {
+        picker.delegate = self
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
@@ -156,7 +152,7 @@ class NewSocialViewController: UIViewController {
                 }
                 
                 ref.setValue(post1)
-                self.performSegue(withIdentifier: "NewSocialToFeed", sender: self)
+                self.performSegue(withIdentifier: "newSocialToFeed", sender: self)
                 
             }
         } else {
@@ -203,5 +199,18 @@ extension UIViewController {
     
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension NewSocialViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        selectFromLibraryButton.removeFromSuperview()
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imageUpload.contentMode = .scaleAspectFit
+        imageUpload.image = chosenImage
+        dismiss(animated:true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }

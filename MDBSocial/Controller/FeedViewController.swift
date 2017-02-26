@@ -123,6 +123,13 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             NSLog("No likes found")
         }
         
+        if let poster = post.poster {
+            cell.posterLabel.text = poster
+        }
+        
+        if let name = post.name {
+            cell.nameLabel.text = name
+        }
         
         if let url = post.imageUrl {
             do {

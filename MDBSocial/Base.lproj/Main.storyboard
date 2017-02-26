@@ -48,7 +48,7 @@
                     <navigationItem key="navigationItem" id="IK6-eL-OKS"/>
                     <connections>
                         <segue destination="cEQ-Dd-sJu" kind="show" identifier="feedToDetail" id="haE-Xb-jHj"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="logout" id="06N-tM-UuK"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logout" id="06N-tM-UuK"/>
                         <segue destination="IIi-bM-sTU" kind="show" identifier="feedToNewSocial" id="yyX-bS-ZED"/>
                     </connections>
                 </viewController>
