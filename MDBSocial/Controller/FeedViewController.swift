@@ -17,6 +17,8 @@ class FeedViewController: UIViewController {
     var postsRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Posts")
     var storage: FIRStorageReference = FIRStorage.storage().reference()
     var currentUser: User?
+    
+    var clickedPost: Post!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +104,7 @@ extension FeedViewController: LikeButtonProtocol {
 }
 
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -115,9 +118,9 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if let likes = post.likes {
             if likes == 0 {
-                cell.interestedLabel.text = "No one has shown interest yet!"
+                cell.interestedButton.setTitle("0 interested", for: .normal)
             } else {
-                cell.interestedLabel.text = String(likes) + " people are interested in the event!"
+                cell.interestedButton.setTitle(String(likes) + " interested", for: .normal)
             }
         } else {
             NSLog("No likes found")
@@ -153,5 +156,18 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        clickedPost = posts[indexPath.row]
+        performSegue(withIdentifier: "feedToDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "feedToDetail" {
+            let vc = segue.destination as! DetailViewController
+            vc.post = clickedPost
+        }
     }
 }

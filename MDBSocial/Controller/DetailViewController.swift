@@ -24,17 +24,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchPost {
-            self.setupLayout()
-        }
-    }
-    
-    func fetchPost(withBlock: @escaping () -> ()) {
-        let ref = FIRDatabase.database().reference()
-        ref.child("Posts").observe(.childAdded, with: { (snapshot) in
-            self.post = Post(id: snapshot.key, postDict: snapshot.value as! [String : Any]?)
-            withBlock()
-        })
+        self.setupLayout()
     }
     
     func setupLayout() {
