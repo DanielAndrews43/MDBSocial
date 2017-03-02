@@ -126,7 +126,7 @@ class NewSocialViewController: UIViewController {
          let stuff = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiE_MaU4KzSAhVKVWMKHe_WAqwQjRwIBw&url=https%3A%2F%2Fnewsroom.uber.com%2Fuberkittens-are-back%2F&psig=AFQjCNFlybH9Tl8uX_dMLeAMXSMmPlZLCw&ust=1488163756269893"
         if let img = imageUpload.image {
             let imageData = UIImageJPEGRepresentation(img, 0.9)
-            let ref = FIRDatabase.database().reference().child("Posts").child((FIRAuth.auth()?.currentUser?.uid)!)
+            let key = FIRDatabase.database().reference().childByAutoId().key
             let storage = FIRStorage.storage().reference().child("pics/\((FIRAuth.auth()?.currentUser?.uid)!)")
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
@@ -134,7 +134,7 @@ class NewSocialViewController: UIViewController {
             storage.put(imageData!, metadata: metadata).observe(.success) { (snapshot) in
                 let url = snapshot.metadata?.downloadURL()?.absoluteString
                 
-                var post1 = ["posterID": self.currentUser?.id ?? 12345,
+                var post1 = ["posterID": self.currentUser?.id ?? "12345",
                              "imageURL": url ?? stuff,
                              "likes": 0] as [String : Any]
                 var post2 = ["name": self.titleView.textField.text ?? "Kitten Kuddle",
@@ -143,15 +143,16 @@ class NewSocialViewController: UIViewController {
                 var post3 = ["location": self.locationView.textField.text ?? "Disneyland",
                              "time": self.timeView.textField.text ?? "summer time!"] as [String : Any]
                 
-                for key in post2.keys {
-                    post1[key] = post2[key]
+                for a in post2.keys {
+                    post1[a] = post2[a]
                 }
                 
-                for key in post3.keys {
-                    post1[key] = post3[key]
+                for a in post3.keys {
+                    post1[a] = post3[a]
                 }
                 
-                ref.setValue(post1)
+                let childUpdates = ["/Posts/\(key)": post1]
+                FIRDatabase.database().reference().updateChildValues(childUpdates)
                 self.performSegue(withIdentifier: "newSocialToFeed", sender: self)
                 
             }

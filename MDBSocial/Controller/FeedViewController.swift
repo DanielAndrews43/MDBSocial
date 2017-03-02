@@ -32,6 +32,8 @@ class FeedViewController: UIViewController {
                 self.setupCollectionView()
                 
                 activityIndicator.stopAnimating()
+                
+                NSLog(String(self.posts.count))
             }
         }
         setupNavBar()
