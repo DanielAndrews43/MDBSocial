@@ -95,7 +95,7 @@ class SignUpViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: emailView.textField.text!, password: passView.textField.text!, completion: { (user: FIRUser?, error) in
             if error == nil {
                 let ref = FIRDatabase.database().reference().child("Users").child((FIRAuth.auth()?.currentUser?.uid)!)
-                ref.setValue(["name": self.nameView.textField.text, "email": self.emailView.textField.text])
+                ref.setValue([Constants.firebase.user.name: self.nameView.textField.text, Constants.firebase.user.email: self.emailView.textField.text])
                 self.emailView.textField.text = ""
                 self.passView.textField.text = ""
                 self.nameView.textField.text = ""

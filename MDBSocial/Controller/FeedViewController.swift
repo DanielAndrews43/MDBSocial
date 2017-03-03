@@ -32,9 +32,7 @@ class FeedViewController: UIViewController {
                 self.setupCollectionView()
                 
                 activityIndicator.stopAnimating()
-                
-                NSLog(String(self.posts.count))
-            }
+                }
         }
         setupNavBar()
     }
@@ -74,7 +72,7 @@ class FeedViewController: UIViewController {
     }
     
     func setupCollectionView() {
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        let frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: view.frame.width, height: view.frame.height - (self.navigationController?.navigationBar.frame.maxY)!)
         let cvLayout = UICollectionViewFlowLayout()
         postCollectionView = UICollectionView(frame: frame, collectionViewLayout: cvLayout)
         postCollectionView.delegate = self
@@ -118,15 +116,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.awakeFromNib()
         let post = posts[indexPath.row]
         
-        if let likes = post.likes {
-            if likes == 0 {
-                cell.interestedButton.setTitle("0 interested", for: .normal)
-            } else {
-                cell.interestedButton.setTitle(String(likes) + " interested", for: .normal)
-            }
-        } else {
-            NSLog("No likes found")
-        }
+        cell.interestedButton.setTitle(String(post.likes) + " interested", for: .normal)
         
         if let poster = post.poster {
             cell.posterLabel.text = poster
@@ -161,7 +151,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     
-    func collectionView(_ collectionView: UICollectionView, didSelectRowAtIndexPath indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         clickedPost = posts[indexPath.row]
         performSegue(withIdentifier: "feedToDetail", sender: self)
     }

@@ -14,11 +14,11 @@
 		16258CF31E5BD20F001E60E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16258CF11E5BD20F001E60E0 /* LaunchScreen.storyboard */; };
 		16258CFE1E5BD20F001E60E0 /* MDBSocialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258CFD1E5BD20F001E60E0 /* MDBSocialTests.swift */; };
 		16258D091E5BD20F001E60E0 /* MDBSocialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258D081E5BD20F001E60E0 /* MDBSocialUITests.swift */; };
+		167560B21E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167560B11E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift */; };
 		168A75791E62281B0047D6D1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A75781E62281B0047D6D1 /* Constants.swift */; };
 		168A75801E62288F0047D6D1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757A1E62288E0047D6D1 /* DetailViewController.swift */; };
 		168A75811E62288F0047D6D1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757B1E62288E0047D6D1 /* FeedViewController.swift */; };
 		168A75821E62288F0047D6D1 /* NewSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757C1E62288E0047D6D1 /* NewSocialViewController.swift */; };
-		168A75831E62288F0047D6D1 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757D1E62288E0047D6D1 /* Date.swift */; };
 		168A75841E62288F0047D6D1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757E1E62288F0047D6D1 /* Post.swift */; };
 		168A75851E62288F0047D6D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757F1E62288F0047D6D1 /* User.swift */; };
 		168A758B1E622E130047D6D1 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A758A1E622E130047D6D1 /* PostCollectionViewCell.swift */; };
@@ -61,11 +61,11 @@
 		16258D041E5BD20F001E60E0 /* MDBSocialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDBSocialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16258D081E5BD20F001E60E0 /* MDBSocialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDBSocialUITests.swift; sourceTree = "<group>"; };
 		16258D0A1E5BD20F001E60E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		167560B11E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedPeopleTableViewCell.swift; sourceTree = "<group>"; };
 		168A75781E62281B0047D6D1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		168A757A1E62288E0047D6D1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Controller/DetailViewController.swift; sourceTree = "<group>"; };
 		168A757B1E62288E0047D6D1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = Controller/FeedViewController.swift; sourceTree = "<group>"; };
 		168A757C1E62288E0047D6D1 /* NewSocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSocialViewController.swift; path = Controller/NewSocialViewController.swift; sourceTree = "<group>"; };
-		168A757D1E62288E0047D6D1 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = Model/Date.swift; sourceTree = "<group>"; };
 		168A757E1E62288F0047D6D1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Post.swift; sourceTree = "<group>"; };
 		168A757F1E62288F0047D6D1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		168A758A1E622E130047D6D1 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -181,7 +181,6 @@
 		168A75891E6228D90047D6D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				168A757D1E62288E0047D6D1 /* Date.swift */,
 				168A757E1E62288F0047D6D1 /* Post.swift */,
 				168A757F1E62288F0047D6D1 /* User.swift */,
 			);
@@ -192,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				168A758A1E622E130047D6D1 /* PostCollectionViewCell.swift */,
+				167560B11E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -507,11 +507,11 @@
 				168A75801E62288F0047D6D1 /* DetailViewController.swift in Sources */,
 				168D3AE71E5D6F13000DE39A /* SignUpViewController.swift in Sources */,
 				169FDDEC1E5BEDB60026592D /* LoginViewController.swift in Sources */,
+				167560B21E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift in Sources */,
 				168A75851E62288F0047D6D1 /* User.swift in Sources */,
 				168A75821E62288F0047D6D1 /* NewSocialViewController.swift in Sources */,
 				168A75791E62281B0047D6D1 /* Constants.swift in Sources */,
 				168A75841E62288F0047D6D1 /* Post.swift in Sources */,
-				168A75831E62288F0047D6D1 /* Date.swift in Sources */,
 				168A758B1E622E130047D6D1 /* PostCollectionViewCell.swift in Sources */,
 				168A75811E62288F0047D6D1 /* FeedViewController.swift in Sources */,
 				16258CE91E5BD20F001E60E0 /* AppDelegate.swift in Sources */,
