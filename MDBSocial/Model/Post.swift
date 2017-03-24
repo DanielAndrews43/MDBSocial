@@ -31,11 +31,7 @@ class Post: NSObject {
             if let text = postDict![Constants.firebase.post.text] as? String {
                 self.text = text
             }
-<<<<<<< HEAD
             if let imageUrl = postDict![Constants.firebase.post.imageUrl] as? String {
-=======
-            if let imageUrl = postDict![Constants.firebase.post.imageURL] as? String {
->>>>>>> master
                 self.imageUrl = imageUrl
             }
             if let likes = postDict![Constants.firebase.post.likes] as? Int {
@@ -43,7 +39,7 @@ class Post: NSObject {
             } else {
                 self.likes = 0
             }
-            if let likers = postDict![Constants.firebase.post.likerIDs] as? [String] {
+            if let likers = postDict![Constants.firebase.post.likeIds] as? [String] {
                 self.likeIDs = likers
             }
             if let poster = postDict![Constants.firebase.post.poster] as? String {
@@ -55,11 +51,7 @@ class Post: NSObject {
             if let time = postDict![Constants.firebase.post.time] as? String {
                 self.time = time
             }
-<<<<<<< HEAD
             if let posterID = postDict![Constants.firebase.post.posterId] as? String {
-=======
-            if let posterID = postDict![Constants.firebase.post.posterID] as? String {
->>>>>>> master
                 self.posterID = posterID
             }
             if let location = postDict![Constants.firebase.post.location] as? String {
@@ -99,6 +91,6 @@ class Post: NSObject {
         }
         
         //updates values
-        postsRef.child(id!).updateChildValues([Constants.firebase.post.likes: self.likes, Constants.firebase.post.likerIDs: sendingLikers])
+        postsRef.child(id!).updateChildValues([Constants.firebase.post.likes: self.likes, Constants.firebase.post.likeIds: sendingLikers])
     }
 }

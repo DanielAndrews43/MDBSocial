@@ -168,7 +168,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate{
         
         ref.child("Users").child((likerIDs?[indexPath.row])!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            let username = value?[Constants.firebase.user.name] as? String ?? ""
+            let username = value?[Constants.firebase.users.name] as? String ?? ""
             cell.awakeFromNib()
             cell.nameLabel.text = username
             

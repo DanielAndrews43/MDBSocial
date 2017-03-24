@@ -9,9 +9,8 @@
 import UIKit
 
 class PostCollectionViewCell: UICollectionViewCell {
-    let nameHeight: CGFloat = 0.05
     let pictureHeight: CGFloat = 0.8
-    let metaHeight: CGFloat = 0.15
+    let metaHeight: CGFloat = 0.2
     
     var imageView: UIImageView!
     var nameLabel: UILabel!
@@ -21,19 +20,23 @@ class PostCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.white
-        let nameView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height * nameHeight))
-        nameLabel = UILabel(frame: CGRect(x: nameView.frame.width * 0.1, y: nameView.frame.height / 10, width: nameView.frame.width * 0.8, height: nameView.frame.height * 4 / 5))
-        nameLabel.adjustsFontSizeToFitWidth = true
-        nameView.addSubview(nameLabel)
-        addSubview(nameView)
+        self.backgroundColor = UIColor(red: 200, green: 200, blue: 200)
         
         //Load in the image
-        imageView = UIImageView(frame: CGRect(x: 0, y: nameView.frame.maxY, width: frame.width, height: frame.height * pictureHeight))
+        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height * pictureHeight))
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = UIColor.white
         self.addSubview(imageView)
+
+        nameLabel = UILabel(frame: CGRect(x: imageView.frame.width * 0.05, y: imageView.frame.height * 0.05, width: imageView.frame.width * 0.8, height: imageView.frame.height * 0.1))
+        nameLabel.textColor = UIColor.white
+        nameLabel.layer.shadowRadius = 1
+        nameLabel.layer.shadowOffset = CGSize(width: 1, height: 1)
+        nameLabel.layer.shadowOpacity = 1
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        nameLabel.adjustsFontSizeToFitWidth = true
+        addSubview(nameLabel)
         
         let metaView = UIView(frame: CGRect(x: 0, y: imageView.frame.maxY, width: frame.width, height: frame.height * metaHeight))
         posterLabel = UILabel(frame: CGRect(x: metaView.frame.width * 0.1, y: 0, width: metaView.frame.width * 0.4, height: metaView.frame.height * 1 / 3))

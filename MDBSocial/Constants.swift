@@ -10,12 +10,6 @@ import UIKit
 
 struct Constants {
     struct firebase {
-        struct date {
-            static let month = "month"
-            static let day = "day"
-            static let hour = "hour"
-        }
-        
         struct post {
             static let text = "text"
             static let imageUrl = "imageURL"
@@ -25,11 +19,12 @@ struct Constants {
             static let time = "time"
             static let posterId = "posterID"
             static let location = "location"
+            static let likeIds = "likerIDs"
         }
         
         struct users {
-            static let name = "name"
             static let email = "email"
+            static let name = "name"
         }
     }
     

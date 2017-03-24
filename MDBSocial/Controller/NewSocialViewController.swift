@@ -25,7 +25,7 @@ class NewSocialViewController: UIViewController {
     let picker = UIImagePickerController()
     
     let viewTitleHeight: CGFloat = 0.1
-    let inputHeight: CGFloat = 0.1
+    let inputHeight: CGFloat = 0.12
     
     
     override func viewDidLoad() {
@@ -36,8 +36,14 @@ class NewSocialViewController: UIViewController {
     }
     
     func setupLayout() {
-        let viewTitleView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * viewTitleHeight))
+        view.backgroundColor = Constants.colors.backgroundColor
+        
+        let viewTitleView: UIView = UIView(frame: CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: view.frame.width, height: view.frame.height * viewTitleHeight))
         let viewTitleLabel: UILabel = UILabel(frame: CGRect(x: viewTitleView.frame.width / 5, y: viewTitleView.frame.height / 5, width: viewTitleView.frame.width * 3 / 5, height: viewTitleView.frame.height * 3 / 5))
+        viewTitleLabel.text = "New Post"
+        viewTitleLabel.textAlignment = .center
+        viewTitleLabel.textColor = UIColor.white
+        viewTitleLabel.adjustsFontSizeToFitWidth = true
         viewTitleView.addSubview(viewTitleLabel)
         view.addSubview(viewTitleView)
         
@@ -65,27 +71,32 @@ class NewSocialViewController: UIViewController {
         let imageLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: imageHolder.frame.width / 3, height: imageHolder.frame.height))
         imageLabel.text = "Event Image:"
         imageLabel.adjustsFontSizeToFitWidth = true
+        imageLabel.textColor = UIColor.white
         imageLabel.textAlignment = .right
         imageHolder.addSubview(imageLabel)
         
         imageUpload = UIImageView(frame: CGRect(x: imageLabel.frame.maxX + imageHolder.frame.width * 0.1, y: imageHolder.frame.height / 4, width: imageHolder.frame.width * 2 / 3 - imageHolder.frame.width * 0.2, height: imageHolder.frame.height / 2))
         selectFromLibraryButton = UIButton(frame: imageUpload.frame)
         selectFromLibraryButton.setTitle("Pick", for: .normal)
-        selectFromLibraryButton.setTitleColor(UIColor.blue, for: .normal)
+        selectFromLibraryButton.setTitleColor(UIColor.white, for: .normal)
         selectFromLibraryButton.addTarget(self, action: #selector(pickImage), for: .touchUpInside)
-        selectFromLibraryButton.backgroundColor = UIColor.black
+        selectFromLibraryButton.backgroundColor = Constants.colors.buttonColor
+        selectFromLibraryButton.layer.cornerRadius = 10
         imageHolder.addSubview(imageUpload)
         imageHolder.addSubview(selectFromLibraryButton)
         
         view.addSubview(imageHolder)
         
         //Post button / back button
-        let postButton: UIButton = UIButton(frame: CGRect(x: 0, y: imageHolder.frame.maxY, width: view.frame.width, height: view.frame.height - imageHolder.frame.maxY))
+        let postView: UIView = UIView(frame: CGRect(x: 0, y: imageHolder.frame.maxY, width: view.frame.width, height: view.frame.height - imageHolder.frame.maxY))
+        let postButton: UIButton = UIButton(frame: CGRect(x: postView.frame.width / 3, y: postView.frame.height / 3, width: postView.frame.width / 3, height: postView.frame.height / 3))
         postButton.setTitle("Post!", for: .normal)
-        postButton.setTitleColor(UIColor.blue, for: .normal)
+        postButton.setTitleColor(UIColor.white, for: .normal)
         postButton.addTarget(self, action: #selector(post), for: .touchUpInside)
-        postButton.backgroundColor = UIColor.lightGray
-        view.addSubview(postButton)
+        postButton.backgroundColor = Constants.colors.buttonColor
+        postButton.layer.cornerRadius = 10
+        postView.addSubview(postButton)
+        view.addSubview(postView)
     }
     
     func pickImage(sender: UIButton!) {
@@ -136,15 +147,15 @@ class NewSocialViewController: UIViewController {
                 
                 NSLog(url!)
                 
-                var post1 = [Constants.firebase.post.posterID: self.currentUser?.id ?? "12345",
-                             Constants.firebase.post.imageURL: url ?? stuff,
+                var post1 = [Constants.firebase.post.posterId: self.currentUser?.id ?? "12345",
+                             Constants.firebase.post.imageUrl: url ?? stuff,
                              Constants.firebase.post.likes: 0] as [String : Any]
                 var post2 = [Constants.firebase.post.name: self.titleView.textField.text ?? "Kitten Kuddle",
                              Constants.firebase.post.poster: self.currentUser?.name ?? "Daniel Andrews",
                              Constants.firebase.post.text: self.textView.textField.text ?? "Come kuddle with kittens!"] as [String : Any]
                 var post3 = [Constants.firebase.post.location: self.locationView.textField.text ?? "Disneyland",
                              Constants.firebase.post.time: self.timeView.textField.text ?? "summer time!",
-                             Constants.firebase.post.likerIDs: []] as [String : Any]
+                             Constants.firebase.post.likeIds: []] as [String : Any]
                 
                 for a in post2.keys {
                     post1[a] = post2[a]
