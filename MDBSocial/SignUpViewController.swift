@@ -32,23 +32,20 @@ class SignUpViewController: UIViewController {
     
     func setLayout() {
         
-        view.backgroundColor = UIColor.blue
+        view.backgroundColor = Constants.colors.backgroundColor
         
         //Name
         let nameView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: view.frame.height * topSpace, width: view.frame.width, height: view.frame.height * fieldHeight), title: "Name")
-        nameView.backgroundColor = UIColor.yellow
         view.addSubview(nameView)
         self.nameView = nameView
         
         //Email
         let emailView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: nameView.frame.maxY, width: view.frame.width, height: view.frame.height * fieldHeight), title: "Email")
-        emailView.backgroundColor = UIColor.yellow
         view.addSubview(emailView)
         self.emailView = emailView
         
         //password
         let passView: InputFieldView = InputFieldView(frame: CGRect(x: 0, y: emailView.frame.maxY, width: view.frame.width, height: view.frame.height * fieldHeight), title: "Password")
-        passView.backgroundColor = UIColor.yellow
         passView.textField.isSecureTextEntry = true
         view.addSubview(passView)
         self.passView = passView
@@ -59,21 +56,21 @@ class SignUpViewController: UIViewController {
         
         //Back Button
         let backView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: buttonsView.frame.width / 2, height: buttonsView.frame.height))
-        backView.backgroundColor = UIColor.cyan
-        let backButton: UIButton = UIButton(frame: CGRect(x: backView.frame.width / 10, y: backView.frame.height / 3, width: backView.frame.width * 4 / 5, height: backView.frame.height / 3))
+        let backButton: UIButton = UIButton(frame: CGRect(x: backView.frame.width / 10, y: backView.frame.height / 8, width: backView.frame.width * 4 / 5, height: backView.frame.height / 5))
         backButton.addTarget(self, action: #selector(backPressed), for: .touchUpInside)
-        backButton.backgroundColor = UIColor.lightGray
+        backButton.backgroundColor = Constants.colors.buttonColor
         backButton.setTitle("Back", for: .normal)
+        backButton.layer.cornerRadius = 15
         backView.addSubview(backButton)
         buttonsView.addSubview(backView)
         
         //Sign Up Button
         let signUpView: UIView = UIView(frame: CGRect(x: buttonsView.frame.width / 2, y: 0, width: buttonsView.frame.width / 2, height: buttonsView.frame.height))
-        signUpView.backgroundColor = UIColor.brown
-        let signUpButton: UIButton = UIButton(frame: CGRect(x: signUpView.frame.width / 10, y: signUpView.frame.height / 3, width: signUpView.frame.width * 4 / 5, height: signUpView.frame.height / 3))
+        let signUpButton: UIButton = UIButton(frame: CGRect(x: signUpView.frame.width / 10, y: signUpView.frame.height / 8, width: signUpView.frame.width * 4 / 5, height: signUpView.frame.height / 5))
         signUpButton.addTarget(self, action: #selector(signUpPressed), for: .touchUpInside)
-        signUpButton.backgroundColor = UIColor.lightGray
+        signUpButton.backgroundColor = Constants.colors.buttonColor
         signUpButton.setTitle("Sign Up", for: .normal)
+        signUpButton.layer.cornerRadius = 15
         signUpView.addSubview(signUpButton)
         buttonsView.addSubview(signUpView)
     }
@@ -131,36 +128,5 @@ class SignUpViewController: UIViewController {
         })
         
         self.present(alert, animated: true, completion: nil)
-    }
-}
-
-
-class InputField: UIView {
-    var title: String!
-    var textField: UITextField!
-    
-    init(frame: CGRect, title: String) {
-        super.init(frame: frame)
-        
-        self.title = title
-        
-        setLayout()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setLayout() {
-        let label: UILabel = UILabel(frame: CGRect(x: frame.width * 0.1, y: 0, width: frame.width * 0.9, height: frame.height / 3))
-        label.text = self.title + ":"
-        
-        let textField: UITextField = UITextField(frame: CGRect(x: frame.width * 0.1, y: frame.height / 3, width: frame.width * 0.8, height: frame.height * 2 / 3))
-        textField.backgroundColor = UIColor.lightGray
-        textField.borderStyle = UITextBorderStyle.line
-        self.textField = textField
-        
-        addSubview(label)
-        addSubview(textField)
     }
 }

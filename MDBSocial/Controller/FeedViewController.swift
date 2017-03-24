@@ -76,7 +76,7 @@ class FeedViewController: UIViewController {
         postCollectionView.delegate = self
         postCollectionView.dataSource = self
         postCollectionView.register(PostCollectionViewCell.self, forCellWithReuseIdentifier: "post")
-        postCollectionView.backgroundColor = UIColor.lightGray
+        postCollectionView.backgroundColor = Constants.colors.backgroundColor
         view.addSubview(postCollectionView)
     }
     

@@ -15,13 +15,13 @@ class Date {
     
     init(dateDict: [String:Any]?) {
         if dateDict != nil {
-            if let month = dateDict!["month"] as? String {
+            if let month = dateDict![Constants.firebase.date.month] as? String {
                 self.month = month
             }
-            if let day = dateDict!["day"] as? String {
+            if let day = dateDict![Constants.firebase.date.day] as? String {
                 self.day = day
             }
-            if let hour = dateDict!["hour"] as? Int {
+            if let hour = dateDict![Constants.firebase.date.hour] as? Int {
                 self.hour = hour
             }
         }

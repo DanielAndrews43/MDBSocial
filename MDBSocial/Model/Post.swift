@@ -22,28 +22,28 @@ class Post: NSObject {
     init(id: String, postDict: [String:Any]?) {
         self.id = id
         if postDict != nil {
-            if let text = postDict!["text"] as? String {
+            if let text = postDict![Constants.firebase.post.text] as? String {
                 self.text = text
             }
-            if let imageUrl = postDict!["imageURL"] as? String {
+            if let imageUrl = postDict![Constants.firebase.post.imageUrl] as? String {
                 self.imageUrl = imageUrl
             }
-            if let likes = postDict!["likes"] as? Int {
+            if let likes = postDict![Constants.firebase.post.likes] as? Int {
                 self.likes = likes
             }
-            if let poster = postDict!["poster"] as? String {
+            if let poster = postDict![Constants.firebase.post.poster] as? String {
                 self.poster = poster
             }
-            if let name = postDict!["name"] as? String {
+            if let name = postDict![Constants.firebase.post.name] as? String {
                 self.name = name
             }
-            if let time = postDict!["time"] as? String {
+            if let time = postDict![Constants.firebase.post.time] as? String {
                 self.time = time
             }
-            if let posterID = postDict!["posterID"] as? String {
+            if let posterID = postDict![Constants.firebase.post.posterId] as? String {
                 self.posterID = posterID
             }
-            if let location = postDict!["location"] as? String {
+            if let location = postDict![Constants.firebase.post.location] as? String {
                 self.location = location
             }
         }

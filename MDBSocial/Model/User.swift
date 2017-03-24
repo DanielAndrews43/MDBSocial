@@ -17,10 +17,10 @@ class User: NSObject {
     init(id: String, userDict: [String:Any]?) {
         self.id = id
         if userDict != nil {
-            if let name = userDict!["name"] as? String {
+            if let name = userDict![Constants.firebase.users.name] as? String {
                 self.name = name
             }
-            if let email = userDict!["email"] as? String {
+            if let email = userDict![Constants.firebase.users.email] as? String {
                 self.email = email
             }
         }

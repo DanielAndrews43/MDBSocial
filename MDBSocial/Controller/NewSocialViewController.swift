@@ -11,10 +11,10 @@ import Firebase
 
 class NewSocialViewController: UIViewController {
 
-    var titleView: InputTextView!
-    var locationView: InputTextView!
-    var timeView: InputTextView!
-    var textView: InputTextView!
+    var titleView: InputFieldView!
+    var locationView: InputFieldView!
+    var timeView: InputFieldView!
+    var textView: InputFieldView!
     var imageUpload: UIImageView!
     var selectFromLibraryButton: UIButton!
     
@@ -42,21 +42,21 @@ class NewSocialViewController: UIViewController {
         view.addSubview(viewTitleView)
         
         //Set title
-        titleView = InputTextView(frame: CGRect(x: 0, y: viewTitleView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Title")
+        titleView = InputFieldView(frame: CGRect(x: 0, y: viewTitleView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Title")
         view.addSubview(titleView)
         
         //Upload image
         
         //Add location?
-        locationView = InputTextView(frame: CGRect(x: 0, y: titleView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Location")
+        locationView = InputFieldView(frame: CGRect(x: 0, y: titleView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Location")
         view.addSubview(locationView)
         
         //Add time?
-        timeView = InputTextView(frame: CGRect(x: 0, y: locationView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Time")
+        timeView = InputFieldView(frame: CGRect(x: 0, y: locationView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Time")
         view.addSubview(timeView)
         
         //Add text
-        textView = InputTextView(frame: CGRect(x: 0, y: timeView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Description")
+        textView = InputFieldView(frame: CGRect(x: 0, y: timeView.frame.maxY, width: view.frame.width, height: view.frame.height * inputHeight), title: "Description")
         view.addSubview(textView)
         
         //Add image
@@ -159,35 +159,6 @@ class NewSocialViewController: UIViewController {
             showBasicAlert(title: "Error", content: "Please choose an image")
             return
         }
-    }
-}
-
-class InputTextView: UIView {
-    var textField: UITextField!
-    var title: String!
-    
-    init(frame: CGRect, title: String) {
-        super.init(frame: frame)
-        
-        self.title = title
-        
-        setLayout(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setLayout(frame: CGRect) {
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width / 3, height: frame.height))
-        titleLabel.text = self.title + ":"
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.textAlignment = .right
-        addSubview(titleLabel)
-        
-        textField = UITextField(frame: CGRect(x: titleLabel.frame.maxX + frame.width * 0.1, y: frame.height / 4, width: frame.width * 2 / 3 - frame.width * 0.2, height: frame.height / 2))
-        textField.backgroundColor = UIColor.lightGray
-        addSubview(textField)
     }
 }
 
