@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import Firebase
 
 class Post: NSObject {
     var text: String?
     var imageUrl: String?
-    var likes: Int?
+    var likes: Int = 0
+    var likeIDs: [String]?
     var poster: String?
     var name: String?
     var id: String?
@@ -19,17 +21,30 @@ class Post: NSObject {
     var posterID: String?
     var location: String?
     
+    var postsRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Posts")
+    var storage: FIRStorageReference = FIRStorage.storage().reference()
+    var currentPost: Post?
+    
     init(id: String, postDict: [String:Any]?) {
         self.id = id
         if postDict != nil {
             if let text = postDict![Constants.firebase.post.text] as? String {
                 self.text = text
             }
+<<<<<<< HEAD
             if let imageUrl = postDict![Constants.firebase.post.imageUrl] as? String {
+=======
+            if let imageUrl = postDict![Constants.firebase.post.imageURL] as? String {
+>>>>>>> master
                 self.imageUrl = imageUrl
             }
             if let likes = postDict![Constants.firebase.post.likes] as? Int {
                 self.likes = likes
+            } else {
+                self.likes = 0
+            }
+            if let likers = postDict![Constants.firebase.post.likerIDs] as? [String] {
+                self.likeIDs = likers
             }
             if let poster = postDict![Constants.firebase.post.poster] as? String {
                 self.poster = poster
@@ -40,7 +55,11 @@ class Post: NSObject {
             if let time = postDict![Constants.firebase.post.time] as? String {
                 self.time = time
             }
+<<<<<<< HEAD
             if let posterID = postDict![Constants.firebase.post.posterId] as? String {
+=======
+            if let posterID = postDict![Constants.firebase.post.posterID] as? String {
+>>>>>>> master
                 self.posterID = posterID
             }
             if let location = postDict![Constants.firebase.post.location] as? String {
@@ -59,5 +78,27 @@ class Post: NSObject {
         self.time = "Whenever"
         self.posterID = "12345"
         self.location = "Disneyland"
+        self.likeIDs = []
+    }
+    
+    func getInterestedUsers() -> [String] {
+        return likeIDs!
+    }
+    
+    func addInterestedUser() {
+        self.likes = self.likes + 1
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        var sendingLikers: [String]!
+        if var likers = likeIDs {
+            likers.append(userID!)
+            sendingLikers = likers
+        } else {
+            sendingLikers = [userID!]
+        }
+        
+        //updates values
+        postsRef.child(id!).updateChildValues([Constants.firebase.post.likes: self.likes, Constants.firebase.post.likerIDs: sendingLikers])
     }
 }

@@ -123,10 +123,10 @@ class NewSocialViewController: UIViewController {
     }
 
     func post() {
-         let stuff = "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiE_MaU4KzSAhVKVWMKHe_WAqwQjRwIBw&url=https%3A%2F%2Fnewsroom.uber.com%2Fuberkittens-are-back%2F&psig=AFQjCNFlybH9Tl8uX_dMLeAMXSMmPlZLCw&ust=1488163756269893"
+         let stuff = "https://newsroom.uber.com/wp-content/uploads/2015/10/HQ_uberkittens_blog_960x540_r1v1.jpg"
         if let img = imageUpload.image {
             let imageData = UIImageJPEGRepresentation(img, 0.9)
-            let ref = FIRDatabase.database().reference().child("Posts").child((FIRAuth.auth()?.currentUser?.uid)!)
+            let key = FIRDatabase.database().reference().childByAutoId().key
             let storage = FIRStorage.storage().reference().child("pics/\((FIRAuth.auth()?.currentUser?.uid)!)")
             let metadata = FIRStorageMetadata()
             metadata.contentType = "image/jpeg"
@@ -134,24 +134,28 @@ class NewSocialViewController: UIViewController {
             storage.put(imageData!, metadata: metadata).observe(.success) { (snapshot) in
                 let url = snapshot.metadata?.downloadURL()?.absoluteString
                 
-                var post1 = ["posterID": self.currentUser?.id ?? 12345,
-                             "imageURL": url ?? stuff,
-                             "likes": 0] as [String : Any]
-                var post2 = ["name": self.titleView.textField.text ?? "Kitten Kuddle",
-                             "poster": self.currentUser?.name ?? "Daniel Andrews",
-                             "text": self.textView.textField.text ?? "Come kuddle with kittens!"] as [String : Any]
-                var post3 = ["location": self.locationView.textField.text ?? "Disneyland",
-                             "time": self.timeView.textField.text ?? "summer time!"] as [String : Any]
+                NSLog(url!)
                 
-                for key in post2.keys {
-                    post1[key] = post2[key]
+                var post1 = [Constants.firebase.post.posterID: self.currentUser?.id ?? "12345",
+                             Constants.firebase.post.imageURL: url ?? stuff,
+                             Constants.firebase.post.likes: 0] as [String : Any]
+                var post2 = [Constants.firebase.post.name: self.titleView.textField.text ?? "Kitten Kuddle",
+                             Constants.firebase.post.poster: self.currentUser?.name ?? "Daniel Andrews",
+                             Constants.firebase.post.text: self.textView.textField.text ?? "Come kuddle with kittens!"] as [String : Any]
+                var post3 = [Constants.firebase.post.location: self.locationView.textField.text ?? "Disneyland",
+                             Constants.firebase.post.time: self.timeView.textField.text ?? "summer time!",
+                             Constants.firebase.post.likerIDs: []] as [String : Any]
+                
+                for a in post2.keys {
+                    post1[a] = post2[a]
                 }
                 
-                for key in post3.keys {
-                    post1[key] = post3[key]
+                for a in post3.keys {
+                    post1[a] = post3[a]
                 }
                 
-                ref.setValue(post1)
+                let childUpdates = ["/Posts/\(key)": post1]
+                FIRDatabase.database().reference().updateChildValues(childUpdates)
                 self.performSegue(withIdentifier: "newSocialToFeed", sender: self)
                 
             }

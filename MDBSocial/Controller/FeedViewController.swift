@@ -17,6 +17,8 @@ class FeedViewController: UIViewController {
     var postsRef: FIRDatabaseReference = FIRDatabase.database().reference().child("Posts")
     var storage: FIRStorageReference = FIRStorage.storage().reference()
     var currentUser: User?
+    
+    var clickedPost: Post!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class FeedViewController: UIViewController {
                 self.setupCollectionView()
                 
                 activityIndicator.stopAnimating()
-            }
+                }
         }
         setupNavBar()
     }
@@ -70,7 +72,7 @@ class FeedViewController: UIViewController {
     }
     
     func setupCollectionView() {
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        let frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: view.frame.width, height: view.frame.height - (self.navigationController?.navigationBar.frame.maxY)!)
         let cvLayout = UICollectionViewFlowLayout()
         postCollectionView = UICollectionView(frame: frame, collectionViewLayout: cvLayout)
         postCollectionView.delegate = self
@@ -102,6 +104,7 @@ extension FeedViewController: LikeButtonProtocol {
 }
 
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -113,15 +116,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.awakeFromNib()
         let post = posts[indexPath.row]
         
-        if let likes = post.likes {
-            if likes == 0 {
-                cell.interestedLabel.text = "No one has shown interest yet!"
-            } else {
-                cell.interestedLabel.text = String(likes) + " people are interested in the event!"
-            }
-        } else {
-            NSLog("No likes found")
-        }
+        cell.interestedButton.setTitle(String(post.likes) + " interested", for: .normal)
         
         if let poster = post.poster {
             cell.posterLabel.text = poster
@@ -153,5 +148,18 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        clickedPost = posts[indexPath.row]
+        performSegue(withIdentifier: "feedToDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "feedToDetail" {
+            let vc = segue.destination as! DetailViewController
+            vc.post = clickedPost
+        }
     }
 }
