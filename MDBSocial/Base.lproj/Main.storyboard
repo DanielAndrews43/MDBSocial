@@ -56,6 +56,24 @@
             </objects>
             <point key="canvasLocation" x="3556" y="442.12893553223392"/>
         </scene>
+        <!--Likes View Controller-->
+        <scene sceneID="fTO-Sx-zgY">
+            <objects>
+                <viewController id="1PM-0o-Hhy" customClass="LikesViewController" customModule="MDBSocial" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BDS-te-HqG"/>
+                        <viewControllerLayoutGuide type="bottom" id="cmS-dU-fyg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DRU-Cd-EwI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hzK-sk-lFj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4696" y="-388"/>
+        </scene>
         <!--Detail View Controller-->
         <scene sceneID="umu-Dj-Msy">
             <objects>
@@ -71,6 +89,7 @@
                     </view>
                     <connections>
                         <segue destination="IIi-bM-sTU" kind="show" identifier="detailToNewSocial" id="asF-3i-gg9"/>
+                        <segue destination="1PM-0o-Hhy" kind="show" identifier="detailToLikes" id="P6g-zF-tWL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GL1-y6-aLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,9 +159,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="06N-tM-UuK"/>
         <segue reference="ccH-e4-Q6L"/>
         <segue reference="asF-3i-gg9"/>
-        <segue reference="Azi-xI-ifL"/>
+        <segue reference="06N-tM-UuK"/>
+        <segue reference="sc2-5C-JMT"/>
     </inferredMetricsTieBreakers>
 </document>

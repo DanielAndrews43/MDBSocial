@@ -123,7 +123,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         if let name = post.name {
-            cell.nameLabel.text = name
+            cell.nameLabel.text = "By: " + name
         }
         
         if let url = post.imageUrl {

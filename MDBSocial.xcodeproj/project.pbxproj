@@ -14,6 +14,8 @@
 		16258CF31E5BD20F001E60E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16258CF11E5BD20F001E60E0 /* LaunchScreen.storyboard */; };
 		16258CFE1E5BD20F001E60E0 /* MDBSocialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258CFD1E5BD20F001E60E0 /* MDBSocialTests.swift */; };
 		16258D091E5BD20F001E60E0 /* MDBSocialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16258D081E5BD20F001E60E0 /* MDBSocialUITests.swift */; };
+		1660B2E31E8A0337005CBAD4 /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660B2E21E8A0337005CBAD4 /* LikesViewController.swift */; };
+		1660B2E51E8A042F005CBAD4 /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1660B2E41E8A042F005CBAD4 /* LikesTableViewCell.swift */; };
 		167560B21E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167560B11E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift */; };
 		168A75791E62281B0047D6D1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A75781E62281B0047D6D1 /* Constants.swift */; };
 		168A75801E62288F0047D6D1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168A757A1E62288E0047D6D1 /* DetailViewController.swift */; };
@@ -62,6 +64,8 @@
 		16258D041E5BD20F001E60E0 /* MDBSocialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDBSocialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16258D081E5BD20F001E60E0 /* MDBSocialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDBSocialUITests.swift; sourceTree = "<group>"; };
 		16258D0A1E5BD20F001E60E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1660B2E21E8A0337005CBAD4 /* LikesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
+		1660B2E41E8A042F005CBAD4 /* LikesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		167560B11E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestedPeopleTableViewCell.swift; sourceTree = "<group>"; };
 		168A75781E62281B0047D6D1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		168A757A1E62288E0047D6D1 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = Controller/DetailViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				168A757A1E62288E0047D6D1 /* DetailViewController.swift */,
 				168A757B1E62288E0047D6D1 /* FeedViewController.swift */,
 				168A757C1E62288E0047D6D1 /* NewSocialViewController.swift */,
+				1660B2E21E8A0337005CBAD4 /* LikesViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				16CE11661E84DD8D0029A4DD /* InputFieldview.swift */,
 				168A758A1E622E130047D6D1 /* PostCollectionViewCell.swift */,
 				167560B11E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift */,
+				1660B2E41E8A042F005CBAD4 /* LikesTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 				168D3AE71E5D6F13000DE39A /* SignUpViewController.swift in Sources */,
 				169FDDEC1E5BEDB60026592D /* LoginViewController.swift in Sources */,
 				167560B21E6A264E007F5F25 /* InterestedPeopleTableViewCell.swift in Sources */,
+				1660B2E31E8A0337005CBAD4 /* LikesViewController.swift in Sources */,
 				168A75851E62288F0047D6D1 /* User.swift in Sources */,
 				168A75821E62288F0047D6D1 /* NewSocialViewController.swift in Sources */,
 				168A75791E62281B0047D6D1 /* Constants.swift in Sources */,
@@ -518,6 +525,7 @@
 				168A75841E62288F0047D6D1 /* Post.swift in Sources */,
 				168A758B1E622E130047D6D1 /* PostCollectionViewCell.swift in Sources */,
 				168A75811E62288F0047D6D1 /* FeedViewController.swift in Sources */,
+				1660B2E51E8A042F005CBAD4 /* LikesTableViewCell.swift in Sources */,
 				16258CE91E5BD20F001E60E0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

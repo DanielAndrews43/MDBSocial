@@ -18,10 +18,8 @@ class DetailViewController: UIViewController {
     let dateHeight: CGFloat = 0.15
     
     var interestedButton: UIButton!
-    
     var post: Post!
     
-    var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,15 +96,22 @@ class DetailViewController: UIViewController {
         //Number people interested buttons
         let interestedView: UIView = UIView(frame: CGRect(x: 0, y: dateView.frame.maxY, width: view.frame.width, height: contentFrame.frame.height * interestedHeight))
         
-        //TODO set numInterestedLabel.text set to whether or not person already said they were interested
-        let numInterestedLabel: UILabel = UILabel(frame: CGRect(x: interestedView.frame.width * 0.1, y: interestedView.frame.height / 6, width: interestedView.frame.width * 0.3, height: interestedView.frame.height * 2 / 3))
-        numInterestedLabel.text = String(self.post.likes) + " interested"
+        let numInterestedButton: UIButton = UIButton(frame: CGRect(x: interestedView.frame.width * 0.1, y: interestedView.frame.height / 6, width: interestedView.frame.width * 0.3, height: interestedView.frame.height * 2 / 3))
+        numInterestedButton.setTitle(String(self.post.likes) + " interested", for: .normal)
+        numInterestedButton.addTarget(self, action: #selector(showInterested), for: .touchUpInside)
+        numInterestedButton.backgroundColor = Constants.colors.buttonColor
         
-        interestedButton = UIButton(frame: CGRect(x: numInterestedLabel.frame.maxX + interestedView.frame.width * 0.1, y: 0, width: interestedView.frame.width * 0.5, height: interestedView.frame.height / 2))
+        interestedButton = UIButton(frame: CGRect(x: numInterestedButton.frame.maxX + interestedView.frame.width * 0.1, y: 0, width: interestedView.frame.width * 0.5, height: interestedView.frame.height))
         interestedButton.addTarget(self, action: #selector(interestedHit), for: .touchUpInside)
-        interestedButton.backgroundColor = UIColor.green
+        interestedButton.backgroundColor = Constants.colors.buttonColor
         
-        interestedView.addSubview(numInterestedLabel)
+        if (post.likeIDs.contains((FIRAuth.auth()?.currentUser?.uid)!)) {
+            interestedButton.setTitle("You are interested!", for: .normal)
+        } else {
+            interestedButton.setTitle("Interested?", for: .normal)
+        }
+        
+        interestedView.addSubview(numInterestedButton)
         interestedView.addSubview(interestedButton)
         contentFrame.addSubview(interestedView)
         
@@ -129,56 +134,20 @@ class DetailViewController: UIViewController {
         self.post.addInterestedUser()
     }
     
-    func setupTableView(){
-        //Initialize TableView Object here
-        tableView = UITableView(frame: CGRect(x: 0, y: UIApplication.shared.statusBarFrame.maxY, width: view.frame.width, height: view.frame.height))
-        //Register the tableViewCell you are using
-        tableView.register(InterestedPeopleTableViewCell.self, forCellReuseIdentifier: "nameCell")
-        
-        //Set properties of TableView
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 50
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50/2, right: 0)
-        //Add tableView to view
-        view.addSubview(tableView)
+    func showInterested() {
+        performSegue(withIdentifier: "detailToLikes", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailToLikes" {
+            let tableVC = segue.destination as! LikesViewController
+            tableVC.post = self.post
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-}
-
-extension DetailViewController: UITableViewDataSource, UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.post.likes
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell") as! InterestedPeopleTableViewCell
-        
-        for subview in cell.contentView.subviews{
-            subview.removeFromSuperview()
-        }
-        
-        let ref = FIRDatabase.database().reference().child("Users")
-        let likerIDs = post.likeIDs
-        
-        ref.child("Users").child((likerIDs?[indexPath.row])!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let username = value?[Constants.firebase.users.name] as? String ?? ""
-            cell.awakeFromNib()
-            cell.nameLabel.text = username
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        return cell
-    }
-
-    
 }
 

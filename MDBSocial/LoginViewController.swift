@@ -20,6 +20,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (FIRAuth.auth()?.currentUser) != nil {
+            performSegue(withIdentifier: "loginToFeed", sender: self)
+        }
+        
         setLayout()
         self.hideKeyboardWhenTappedAround()
     }
