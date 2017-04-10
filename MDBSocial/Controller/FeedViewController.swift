@@ -27,12 +27,11 @@ class FeedViewController: UIViewController {
         activityIndicator.startAnimating()
         
         fetchUser {
+            self.setupNavBar()
+            self.setupCollectionView()
             self.fetchPosts() {
-                self.setupNavBar()
-                self.setupCollectionView()
-                
                 activityIndicator.stopAnimating()
-                }
+            }
         }
         setupNavBar()
     }
@@ -40,8 +39,21 @@ class FeedViewController: UIViewController {
     func fetchPosts(withBlock: @escaping () -> ()) {
         let ref = FIRDatabase.database().reference()
         ref.child("Posts").observe(.childAdded, with: { (snapshot) in
-            let post = Post(id: snapshot.key, postDict: snapshot.value as! [String : Any]?)
-            self.posts.append(post)
+            if let postDict = snapshot.value {
+                let post = Post(id: snapshot.key, postDict: postDict as? [String: Any])
+                self.posts.append(post)
+                
+                var indexPaths = Array<IndexPath>()
+                let index = self.posts.index(where: {$0.id == post.id})
+                let indexPath = IndexPath(item: index!, section: 0)
+                indexPaths.append(indexPath)
+                
+                DispatchQueue.main.async {
+                    self.postCollectionView.performBatchUpdates({void in
+                        self.postCollectionView.insertItems(at: indexPaths)
+                        }, completion: nil)
+                }
+            }
             
             withBlock()
         })
@@ -119,11 +131,11 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.interestedButton.setTitle(String(post.likes) + " interested", for: .normal)
         
         if let poster = post.poster {
-            cell.posterLabel.text = poster
+            cell.posterLabel.text = "By: " + poster
         }
         
         if let name = post.name {
-            cell.nameLabel.text = "By: " + name
+            cell.nameLabel.text = name
         }
         
         if let url = post.imageUrl {

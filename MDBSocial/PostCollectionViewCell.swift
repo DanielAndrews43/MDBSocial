@@ -39,12 +39,11 @@ class PostCollectionViewCell: UICollectionViewCell {
         addSubview(nameLabel)
         
         let metaView = UIView(frame: CGRect(x: 0, y: imageView.frame.maxY, width: frame.width, height: frame.height * metaHeight))
-        posterLabel = UILabel(frame: CGRect(x: metaView.frame.width * 0.1, y: 0, width: metaView.frame.width * 0.4, height: metaView.frame.height * 1 / 3))
+        posterLabel = UILabel(frame: CGRect(x: metaView.frame.width * 0.1, y: 0, width: metaView.frame.width * 0.4, height: metaView.frame.height))
         posterLabel.adjustsFontSizeToFitWidth = true
         posterLabel.font = UIFont.systemFont(ofSize: 12)
         interestedButton = UIButton(frame: CGRect(x: posterLabel.frame.maxX, y: 0, width: metaView.frame.width * 0.3, height: metaView.frame.height))
-        interestedButton.backgroundColor = UIColor.red
-
+        
         metaView.addSubview(posterLabel)
         metaView.addSubview(interestedButton)
         

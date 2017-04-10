@@ -101,13 +101,13 @@ class Post: NSObject {
         let userID = FIRAuth.auth()?.currentUser?.uid
         
         if var likers = likeIDs {
-            
             if !likers.contains(userID!) {
                 likers.append(userID!)
                 self.likes = self.likes + 1
             }
         } else {
             likeIDs = [userID!]
+            self.likes = 1
         }
         
         //updates values

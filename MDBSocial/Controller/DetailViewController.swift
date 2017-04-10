@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = Constants.colors.backgroundColor
         self.setupLayout()
     }
     
